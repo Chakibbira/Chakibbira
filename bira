@@ -1,0 +1,39 @@
+
+// سكربت تحديد كرة thimbles في Linebet
+
+// متغيرات
+const urlGame = "https://linebet.com/en/games/thimbles"; // URL لعبة thimbles في Linebet
+const delay = 1000; // زمن التأخير (بالمللي ثانية)
+
+// وظيفة تحليل اللعبة
+function analyzeGame() {
+  // الحصول على عناصر الأكواب
+  const cups = document.querySelectorAll(".cup");
+
+  // تحليل كل كوب
+  for (const cup of cups) {
+    // الحصول على لون الكرة
+    const ballColor = cup.querySelector(".ball").style.backgroundColor;
+
+    // التحقق من لون الكرة الثمينة
+    if (ballColor === "gold") {
+      // إظهار إشعار بنتيجة التحليل
+      alert("الكوب الذي يحتوي على الكرة الثمينة هو: " + cup.textContent);
+
+      // إيقاف تشغيل السكربت
+      return;
+    }
+  }
+
+  // لم يتم العثور على الكرة الثمينة
+  alert("لم يتم العثور على الكرة الثمينة!");
+}
+
+// تشغيل السكربت
+function startScript() {
+  // الانتظار قليلاً قبل تحليل اللعبة
+  setTimeout(analyzeGame, delay);
+}
+
+// بدء تشغيل السكربت
+startScript();
